@@ -1,48 +1,43 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Container,
   Divider,
   Dropdown,
-  Grid,
-  Header,
-  Image,
-  List,
   Menu,
   Segment,
   Responsive,
-  Icon
-} from "semantic-ui-react";
+  Icon,
+} from 'semantic-ui-react';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
+import Router from 'next/router';
+import dynamic from 'next/dynamic';
 
 const mobileNavTrigger = (
   <span>
-    <Icon inverted name="money bill alternate outline" />
+    <Icon inverted name='money bill alternate outline' />
   </span>
 );
 
-export const MenuBar = () => (
+const MenuBar = () => (
   //   Navbar
   <div>
     <Responsive as={Segment} minWidth={480}>
-      <Menu fixed="top" borderless color="blue" inverted>
+      <Menu fixed='top' borderless color='blue' size='huge' inverted>
         <Container>
           <Menu.Item header>
-            <FontAwesomeIcon
-              icon={faDollarSign}
-              style={{ marginRight: "0.5rem" }}
-            />
+            <Icon inverted name='dollar' />
             Investments
           </Menu.Item>
-          <Menu.Item as="a">Portfolio</Menu.Item>
-          <Menu.Item as="a">Wallet</Menu.Item>
+          <Menu.Item as='a'>Portfolio</Menu.Item>
+          <Menu.Item as='a'>Wallet</Menu.Item>
 
-          <Menu.Menu position="right">
-            <Dropdown item simple text="Kia ora, Matt">
+          <Menu.Menu position='right'>
+            <Dropdown item simple text='Kia ora, Matt'>
               <Dropdown.Menu>
                 <Dropdown.Item>Settings</Dropdown.Item>
-                <Dropdown.Item>Logout</Dropdown.Item>
+                <Dropdown.Item onClick={() => Router.push('/')}>
+                  Logout
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>
@@ -50,11 +45,11 @@ export const MenuBar = () => (
       </Menu>
     </Responsive>
     <Responsive as={Segment} maxWidth={479}>
-      <Menu color="blue" size="huge" inverted borderless fixed="top">
+      <Menu color='blue' size='huge' inverted borderless fixed='top'>
         <Container>
           <Menu.Item header>Investments</Menu.Item>
-          <Menu.Menu position="right">
-            <Dropdown item trigger={mobileNavTrigger} button>
+          <Menu.Menu position='right'>
+            <Dropdown item text='Menu' button>
               <Dropdown.Menu>
                 <Dropdown.Item>Portfolio</Dropdown.Item>
                 <Dropdown.Item>Wallet</Dropdown.Item>
@@ -69,3 +64,7 @@ export const MenuBar = () => (
     </Responsive>
   </div>
 );
+
+export default dynamic(() => Promise.resolve(MenuBar), {
+  ssr: false,
+});

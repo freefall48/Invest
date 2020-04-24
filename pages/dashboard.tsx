@@ -8,51 +8,34 @@ import {
   Card,
   Placeholder,
   Grid,
-  Segment,
+  Segment, Table,
 } from 'semantic-ui-react';
+import Breakdown from "../components/dashboard/breakdown";
 
 const Dashboard = () => (
   <div>
     <NavBar />
+    <Container style={{ marginTop: '4rem' }} textAlign={"center"}>
+      <Breakdown />
+    </Container>
     <Container style={{ marginTop: '4rem' }}>
-      <Divider horizontal>
-        <Header as='h3'>
-          <Icon name='chart bar outline' />
-          Portfolio Diversity
-        </Header>
-      </Divider>
-      <Card.Group itemsPerRow={1}>
-        <Card>
-          <Card.Content>
-            <Placeholder>
-              <Placeholder.Image square />
-            </Placeholder>
-          </Card.Content>
-        </Card>
-      </Card.Group>
-      <Card.Group itemsPerRow={3}>
-        <Card>
-          <Card.Content>
-            <Placeholder>
-              <Placeholder.Image rectangular />
-            </Placeholder>
-          </Card.Content>
-        </Card>
-        <Card>
-          <Card.Content>
-            <Placeholder>
-              <Placeholder.Image rectangular />
-            </Placeholder>
-          </Card.Content>
-        </Card>
-        <Card>
-          <Card.Content>
-            <Placeholder>
-              <Placeholder.Image rectangular />
-            </Placeholder>
-          </Card.Content>
-        </Card>
-      </Card.Group>
+      <Grid
+          columns={2}
+          relaxed='very'
+          verticalAlign='middle'
+          centered
+          divided
+          stackable>
+        <Grid.Column>
+          <Header textAlign='center' size={'large'}>NZ Summary</Header>
+          <Header textAlign='center'>Daily Growth:<span style={{color: "lightgreen", marginLeft: '1rem'}}>4.67%</span></Header>
+          <Header textAlign='center'>Value:<span style={{ marginLeft: '1rem'}}>$14000</span></Header>
+        </Grid.Column>
+        <Grid.Column>
+          <Header textAlign='center' size={'large'}>US Summary</Header>
+        </Grid.Column>
+      </Grid>
+
       <Divider horizontal style={{ marginTop: '3rem' }}>
         <Header as='h3'>
           <Icon name='money bill alternate outline' />
@@ -93,7 +76,7 @@ const Dashboard = () => (
       </Grid>
     </Segment>
     <Segment inverted color='grey' basic textAlign='center'>
-      Copyright LocalNetwork Investments 2020
+      Copyright &copy; LocalNetwork Investments 2020
     </Segment>
   </div>
 );

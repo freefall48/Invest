@@ -17,7 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@observablehq/runtime": "^4.7.0",
-    "d3": "^5.15.1",
+    "d3": "^7.6.1",
     "next": "^9.3.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
